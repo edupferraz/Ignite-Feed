@@ -1,7 +1,10 @@
 import { Header } from './components/Header';
 import { Post } from './Post';
 
+import styles from './App.module.css'
+
 import './global.css'
+import { Sidebar } from './components/Sidebar';
 
 export function App() {
 
@@ -10,16 +13,24 @@ export function App() {
 
       <Header/>
 
-      <Post 
-        author="Eduardo Ferraz" 
-        content="Lorem ipsum dolor sit amet consectetur adipisicing elit." 
-      />
-      <Post 
-        author="Diego Fernandes"
-        content="This is a React program"
-      />
-      <Post />
-      <Post />
+    <div className={styles.wrapper}>
+
+        <Sidebar/>
+        
+        <main>
+
+          <Post 
+            author="Eduardo Ferraz" 
+            content="Lorem ipsum dolor sit amet consectetur adipisicing elit." 
+          />
+
+          <Post 
+            author="Diego Fernandes"
+            content="This is a React program"
+          />
+        </main>
+    </div>
+
     </div>
 
   )
