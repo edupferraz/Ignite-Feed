@@ -4,8 +4,14 @@ export function App() {
 
   return (
     <div>
-      <Post />
-      <Post />
+      <Post 
+        author="Eduardo Ferraz" 
+        content="Lorem ipsum dolor sit amet consectetur adipisicing elit." 
+      />
+      <Post 
+        author="Diego Fernandes"
+        content="This is a React program"
+      />
       <Post />
       <Post />
     </div>
