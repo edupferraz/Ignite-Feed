@@ -1,9 +1,13 @@
+import { Header } from './components/Header';
 import { Post } from './Post';
 
 export function App() {
 
   return (
     <div>
+
+      <Header/>
+
       <Post 
         author="Eduardo Ferraz" 
         content="Lorem ipsum dolor sit amet consectetur adipisicing elit." 
