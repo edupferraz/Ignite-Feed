@@ -1,16 +1,21 @@
 import { Sidebar } from './components/Sidebar';
 import { Header } from './components/Header';
-import { Post } from './components/Post';
+import { Post, PostProps } from './components/Post';
 
 import styles from './App.module.css'
 
 import './global.css'
+import id from 'date-fns/esm/locale/id/index.js';
 
 // Author { avatar_url; name; role}
 // publishedAt: dat
 // content: string
 
-const posts = [
+interface Post extends PostProps {
+  id: number;
+}
+
+const posts:Post[] = [
   {
     id: 1,
     author: {
@@ -19,9 +24,10 @@ const posts = [
       role: 'Web Developer'
     },
     content: [
-      { type: 'paragraph', content: 'Fala galeraa 👋'},
-      { type: 'paragraph', content: 'Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀'},
-      { type: 'link', content: 'jane.design/doctorcare'},
+      { type: 'paragraph', content: 'Falaaa Devs 👋'},
+      { type: 'paragraph', content: 'Acabei de subir um projeto que fiz na jornada Ignite da Rocketseat. O projeto é o Ignite Feed 🚀'},
+      { type: 'paragraph', content: 'É uma novo projeto da jornada atualizada, revisamos diversos pilares do React e tivemos um gostinho de como é bom utilizar o TypeScript. Gostaram? 😉 '},
+      { type: 'link', content: 'https://github.com/edupferraz/Ignite-Feed'},
     ],
     publishedAt: new Date('2022-11-29 06:21:00')
   },

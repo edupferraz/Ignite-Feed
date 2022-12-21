@@ -1,16 +1,32 @@
-import { useState } from 'react';
+import { ChangeEvent, FormEvent, InvalidEvent, useState } from 'react';
 import { format, formatDistanceToNow } from 'date-fns';
 import ptBR from 'date-fns/locale/pt-BR';
-
 
 import { Avatar } from './Avatar';
 import { Comment } from './Comment';
 import styles from './Post.module.css';
 
-export function Post ({ author, publishedAt, content}) {
+interface Author {
+    name: string;
+    role: string;
+    avatarUrl: string;
+}
+
+interface Content {
+    type: 'paragraph' | 'link';
+    content: string;
+}
+
+export interface PostProps {
+    author: Author;
+    publishedAt: Date;
+    content: Content[];
+}
+
+export function Post ({ author, publishedAt, content}: PostProps) {
 
     const [comments, setComments] = useState ([
-        'Post muito bana, hein?!'
+        'Projeto genial, professor top esse aí 😁'
     ])
 
     const [newCommentText, setNewCommentText] = useState('')
@@ -24,7 +40,7 @@ export function Post ({ author, publishedAt, content}) {
         addSuffix: true,
     })
 
-    function handleCreateNewComment() {
+    function handleCreateNewComment(event: FormEvent) {
         event.preventDefault();
 
         // imutabilidade
@@ -34,25 +50,22 @@ export function Post ({ author, publishedAt, content}) {
 
     }
 
-    function handleNewCommentChange(){
+    function handleNewCommentChange(event: ChangeEvent<HTMLTextAreaElement>){
         event.target.setCustomValidity('');
-
-  
 
         setNewCommentText(event.target.value);
     }
 
-    function handleNewCommentInvalid() {
+    function handleNewCommentInvalid(event: InvalidEvent<HTMLTextAreaElement>) {
         console.log("test")
         event.target.setCustomValidity('Esse campo é obrigatório');
     }
 
-    function deleteComment(comment) {
-        console.log(`Deletar comentário ${comment}`)
+    function deleteComment(commentToDelete: string) {
 
         // imutabilidade -> as variáveis não sofrem mutação, nós criamos um novo valor
 
-        const commentsWithoutDeletedOne = comments.filter(commentToDelete => {
+        const commentsWithoutDeletedOne = comments.filter(comment => {
             return comment != commentToDelete;
         })
 
