@@ -1,8 +1,8 @@
 /* eslint-disable react/prop-types */
-export function Post(props) {
+export function Post() {
     return (
         <div>
-            <h1>{props.author} + {props.content}</h1>
+           <h1></h1>
         </div>
     )
 }
